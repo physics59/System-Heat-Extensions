@@ -24,13 +24,15 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <KSP_DIR>$(physics59_KSP)</KSP_DIR>
+    <KSP_DIR>$([System.Environment]::GetEnvironmentVariable('KSP_DIR'))</KSP_DIR>
   </PropertyGroup>
 
-  <Target Name="PostBuild" AfterTargets="Build">
+  <Target Name="PostBuild" AfterTargets="Build" Condition="'$(Configuration)'=='Debug'">
     <Copy
       SourceFiles="$(TargetPath)"
       DestinationFolder="$(KSP_DIR)\GameData\SystemHeatExtensions\Plugins" />
   </Target>
+
+  <Target Name="PostBuild" AfterTargets="Build" Condition="'$(Configuration)'=='Release'"></Target>
 
 </Project>
