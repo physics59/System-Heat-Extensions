@@ -1,0 +1,37 @@
+name: Build SystemHeatExtensions
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Build project
+      run: dotnet build -c Release
+
+    - name: Prepare GameData folder
+      run: |
+        mkdir release/GameData/SystemHeatExtensions/Plugins
+        copy GameData\SystemHeatExtensions\Plugins\*.dll release/GameData/SystemHeatExtensions/Plugins/
+
+    - name: Zip mod
+      run: |
+        powershell Compress-Archive -Path release/GameData -DestinationPath SystemHeatExtensions.zip
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: SystemHeatExtensions
+        path: SystemHeatExtensions.zip
