@@ -22,12 +22,4 @@
         <HintPath>Libraries\SystemHeat.dll</HintPath>
       </Reference>
   </ItemGroup>
-
-    <!-- 🚀 AUTO COPY STEP -->
-  <Target Name="PostBuild" AfterTargets="Build">
-    <Copy
-      SourceFiles="$(TargetPath)"
-      DestinationFolder="C:\Users\cwbar\KerbalSpaceProgram\English\GameData\SystemHeatExtensions\Plugins" />
-  </Target>
-
 </Project>
