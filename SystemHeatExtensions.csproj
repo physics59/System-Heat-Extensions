@@ -27,7 +27,7 @@
   <Target Name="PostBuild" AfterTargets="Build">
     <Copy
       SourceFiles="$(TargetPath)"
-      DestinationFolder="C:\Users\cwbar\KerbalSpaceProgram\English\GameData\Fusion!\Plugins" />
+      DestinationFolder="C:\Users\cwbar\KerbalSpaceProgram\English\GameData\SystemHeatExtensions\Plugins" />
   </Target>
 
 </Project>
