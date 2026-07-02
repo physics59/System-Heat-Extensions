@@ -22,4 +22,15 @@
         <HintPath>Libraries\SystemHeat.dll</HintPath>
       </Reference>
   </ItemGroup>
+
+  <PropertyGroup>
+    <KSP_DIR>$(physics59_KSP)</KSP_DIR>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="Build">
+    <Copy
+      SourceFiles="$(TargetPath)"
+      DestinationFolder="$(KSP_DIR)\GameData\SystemHeatExtensions\Plugins" />
+  </Target>
+
 </Project>
