@@ -21,27 +21,7 @@ public class ThermoelectricCalculator
         double ratedDeltaTemp = ratedHotTemp - ratedColdTemp;
         return ratedPower / (conversionEfficiency * ratedDeltaTemp * ratedDeltaTemp / ratedHotTemp);
     }
-
-    public double ThermalEfficiency(float hotTemp, float coldTemp)
-    {
-        return 1 - (coldTemp / hotTemp);
-    }
-
-    public double HeatFlux(float hotTemp, float coldTemp, double flowParameter)
-    {
-        return flowParameter * (hotTemp - coldTemp);
-    }
-
-    public double ThermalPower(float hotTemp, float coldTemp, double flowParameter)
-    {
-        return ThermalEfficiency(hotTemp, coldTemp) * HeatFlux(hotTemp, coldTemp, flowParameter);
-    }
-
-    public double ElectricPower(float hotTemp, float coldTemp, double flowParameter, double conversionEfficiency)
-    {
-        return ThermalPower(hotTemp, coldTemp, flowParameter) * conversionEfficiency;
-    }
-
+    
     public ThermoelectricResult Compute(
         double hotTemp,
         double coldTemp,
